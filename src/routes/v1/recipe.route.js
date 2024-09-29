@@ -1,5 +1,6 @@
 const express=require('express');
 const {recipeController}=require('../../controllers');
+const { accessToken } = require('../../middlewares/auth');
 
 const router=express.Router();
 
@@ -9,7 +10,7 @@ recipeController.addRecipe
 );
 
 // list recipe 
-router.get("/list-recipe",
+router.get("/list-recipe",accessToken(),
     recipeController.getRecipeList
     );
 
